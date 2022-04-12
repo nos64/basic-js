@@ -15,7 +15,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function createDreamTeam(arr) {
   let result = [];
-  if (typeof arr === 'string') {
+  if (Array.isArray(arr)) {
     arr.map(item => {
       if (typeof item === 'string') {
         
@@ -24,7 +24,6 @@ function createDreamTeam(arr) {
     })
     return result.sort().join('').toUpperCase()
   } else return false
-  
   // throw new NotImplementedError('Not implemented');
   // remove line with error and write your code here
 }
