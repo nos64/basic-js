@@ -20,35 +20,93 @@ const { NotImplementedError } = require('../extensions/index.js');
   separator ='+', //разделитель
   addition = '', //доп. строка после каждого повторения
   additionRepeatTimes, //число повторений additions
-  additionSeparator='', //разделитель для adition
+  additionSeparator='|', //разделитель для adition
 } = options;
-let addit = [];
-if (additionRepeatTimes) {
-  for (let i = 1; i<= additionRepeatTimes; i++) {
-    let vari = addition.toString()+additionSeparator;
-    addit.push(vari)
-    console.log(addit)
-  }
-} else {
-  let vari = addition.toString();
-  
-  addit.push(vari)
-}
 
-let result=''
-// if (repeatTimes > 1) {
-  result = str.toString()+addit.join('').slice(0, - additionSeparator.length)+separator;
-// } else result = str.toString()+addit.join('')
+  // console.log(addition + '')
 
-// console.log('result:', result)
-let resAr = [];
-if (repeatTimes) {
-  for(let i = 1; i<= repeatTimes; i++) {
-    resAr.push(result)
+  if (str === null && addition === null) {
+    let newStr = '';
+    let newAddit = '';
+    newStr = 'null';
+    newAddit = 'null';
+    let addit = [];
+    let resultAddition = '';
+    if (additionRepeatTimes) {
+      let vari=newAddit+additionSeparator;
+      for (let i = 1; i<= additionRepeatTimes; i++) {
+        addit.push(vari)
+
+      }
+      if (additionSeparator.length !== 0) {
+        resultAddition = addit.join('').slice(0, - additionSeparator.length);
+      } else {
+        resultAddition = addit.join('');
+      }
+    } else {
+      let vari = newAddit;
+      addit.push(vari);
     }
-} else resAr.push(result)
 
-return resAr.join('').toString().slice(0, -separator.length);
+    let result='';
+    if (repeatTimes > 1) {
+      result = newStr + resultAddition+separator;
+      
+    } else {
+    result = newStr + addit.toString() + separator;
+    }
+
+    let resAr = [];
+    if (repeatTimes) {
+      for(let i = 1; i<= repeatTimes; i++) {
+        resAr.push(result)
+        }
+    } else resAr.push(result)
+
+    return resAr.join('').toString().slice(0, -separator.length);
+    
+
+
+  } else {
+    let newStr = str + ''
+    let newAddit = addition + '';
+    let addit = [];
+    let resultAddition = '';
+    if (additionRepeatTimes) {
+      let vari=newAddit+additionSeparator;
+      for (let i = 1; i<= additionRepeatTimes; i++) {
+        addit.push(vari)
+      }
+      if (additionSeparator.length !== 0) {
+        resultAddition = addit.join('').slice(0, - additionSeparator.length);
+        
+      } else {
+        resultAddition = addit.join('');
+      }
+    } else {
+      let vari = newAddit.toString();
+      addit.push(vari);
+    }
+    
+
+    let result='';
+    if (repeatTimes >= 1) {
+      result = newStr + resultAddition+separator;
+      // console.log('result: ', result);
+      
+    } else {
+    result = newStr + addit.toString() + separator;
+    }
+    // console.log('resultAddition: ', resultAddition);
+    let resAr = [];
+    if (repeatTimes) {
+      for(let i = 1; i<= repeatTimes; i++) {
+        resAr.push(result)
+
+        }
+    } else resAr.push(result)
+    return resAr.join('').toString().slice(0, -separator.length);
+  }
 
 }
 
