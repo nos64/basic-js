@@ -23,8 +23,6 @@ const { NotImplementedError } = require('../extensions/index.js');
   additionSeparator='|', //разделитель для adition
 } = options;
 
-  // console.log(addition + '')
-
   if (str === null && addition === null) {
     let newStr = '';
     let newAddit = '';
@@ -92,19 +90,17 @@ const { NotImplementedError } = require('../extensions/index.js');
     let result='';
     if (repeatTimes >= 1) {
       result = newStr + resultAddition+separator;
-      // console.log('result: ', result);
       
     } else {
     result = newStr + addit.toString() + separator;
     }
-    // console.log('resultAddition: ', resultAddition);
     let resAr = [];
     if (repeatTimes) {
       for(let i = 1; i<= repeatTimes; i++) {
         resAr.push(result)
-
         }
-    } else resAr.push(result)
+    } else resAr.push(result);
+    
     return resAr.join('').toString().slice(0, -separator.length);
   }
 
